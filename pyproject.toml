@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "aiohttp-irbis"
+version = "0.1dev0"
+description = "Пакет, связывающий библиотеку PythonIrbis с асинхронным веб-фреймворком aiohttp."
+authors = [
+    "Ruslan Ilyasovich Gilfanov <ri.gilfanov@yandex.ru>",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Framework :: AsyncIO",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Database",
+    "Topic :: Database :: Front-Ends",
+    "Topic :: Internet",
+    "Topic :: Internet :: WWW/HTTP",
+]
+keywords = ["aiohttp", "asyncio", "irbis", "irbis64"]
+license = "MIT License"
+readme = "README.rst"
+
+documentation = "https://aiohttp-irbis.readthedocs.io/"
+repository = "https://github.com/ri-gilfanov/aiohttp-irbis"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+aiohttp = "^3.7.4.post0"
+aiohttp-things = ">=0.12.0"
+irbis = { git = "https://github.com/amironov73/PythonIrbis.git" }
+
+[tool.poetry.dev-dependencies]
+flake8 = ">=3.9.2"
+isort = ">=5.9.2"
+mypy = ">=0.910"
+pytest = ">=6.2.4"
+pytest-cov = ">=2.12.1"
+Sphinx = ">=4.1.1"
+sphinx_rtd_theme = ">=0.5.2"
+types-toml = ">=0.1.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+known_first_party = ["aiohttp_irbis"]
+known_third_party = ["aiohttp", "aiohttp-things", "irbis"]
+profile = "wemake"
+src_paths = ["aiohttp_irbis", "examples", "tests"]
+
+[tool.mypy]
+files = [
+    "aiohttp_irbis",
+    "tests",
+]
+
+[[tool.mypy.overrides]]
+module = ['irbis.*']
+ignore_missing_imports = true
